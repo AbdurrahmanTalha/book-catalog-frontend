@@ -1,16 +1,38 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import React from "react"
+import React, { useState } from "react"
 import bookGenres from "../constants/bookGenre"
-import { useGetRecentBooksQuery } from "../redux/features/bookApi"
+import { useGetAllBooksQuery } from "../redux/features/bookApi"
 import BookCard from "../components/ui/BookCard"
 import { IBook } from "../types/globalTypes"
 
 export default function AllBooks() {
+    const [search, setSearchValue] = useState("")
+    const [genre, setGenreValue] = useState("")
+    const [publishedAt, setPublishedAtValue] = useState("")
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    const { data, isLoading, error } = useGetRecentBooksQuery(undefined)
+    const { data, isLoading, error } = useGetAllBooksQuery({
+        searchTerm: search,
+        genre: genre,
+        publishedAt: publishedAt,
+    })
     console.log(data)
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+    console.log(search, genre, publishedAt)
+    const handleSearchChange = (event: React.ChangeEvent<any>) => {
+        setSearchValue(event.target.value)
+    }
+
+    const handleGenreChange = (event: React.ChangeEvent<any>) => {
+        setGenreValue(event.target.value)
+    }
+
+    const handlePublishedAtChange = (event: React.ChangeEvent<any>) => {
+        setPublishedAtValue(event.target.value)
+    }
+
     const books = data?.data ?? []
     return (
         <div className="px-[10px] w-full">
@@ -22,6 +44,8 @@ export default function AllBooks() {
                         placeholder="Search"
                         aria-label="Search"
                         aria-describedby="button-addon1"
+                        value={search}
+                        onChange={handleSearchChange}
                     />
 
                     <button
@@ -38,24 +62,32 @@ export default function AllBooks() {
                             className="h-5 w-5"
                         >
                             <path
-                                fill-rule="evenodd"
+                                fillRule="evenodd"
                                 d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
-                                clip-rule="evenodd"
+                                clipRule="evenodd"
                             />
                         </svg>
                     </button>
                 </div>
                 <div className="lg:md:join flex justify-between">
-                    <select className="select select-bordered w-full max-w-[10rem]">
-                        <option disabled selected>
+                    <select
+                        className="select select-bordered w-full max-w-[10rem]"
+                        value={genre}
+                        onChange={handleGenreChange}
+                    >
+                        <option disabled value="">
                             Genre
                         </option>
                         {bookGenres.map((genre) => (
-                            <option>{genre}</option>
+                            <option key={genre}>{genre}</option>
                         ))}
                     </select>
-                    <select className="select select-bordered w-full max-w-[10rem]">
-                        <option disabled selected>
+                    <select
+                        className="select select-bordered w-full max-w-[10rem]"
+                        value={publishedAt}
+                        onChange={handlePublishedAtChange}
+                    >
+                        <option disabled value="">
                             Published At
                         </option>
                         <option>2019</option>
@@ -66,12 +98,9 @@ export default function AllBooks() {
                 </div>
             </div>
             <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1">
-                {
-                    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-                    books.map((book: IBook) => (
-                        <BookCard book={book} key={book._id} />
-                    ))
-                }
+                {books.map((book: IBook) => (
+                    <BookCard book={book} key={book._id} />
+                ))}
             </div>
         </div>
     )
