@@ -6,9 +6,11 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview",
-    "prettier:fix": "yarn prettier --write src/"
+    "lint:check": "eslint --ignore-path .eslintignore --ext .js,.ts .",
+    "lint:fixed": "eslint . --fix",
+    "prettier:check": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
+    "prettier:fixed": "prettier --write .",
+    "lint_prettier:check": "yarn lint:check && yarn prettier:check"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
@@ -32,7 +34,12 @@
     "eslint": "^8.44.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.1",
+    "husky": ">=6",
+    "lint-staged": ">=10",
     "typescript": "^5.0.2",
     "vite": "^4.4.0"
+  },
+  "lint-staged": {
+    "src/**/*.ts": "yarn lint_prettier:check"
   }
 }
