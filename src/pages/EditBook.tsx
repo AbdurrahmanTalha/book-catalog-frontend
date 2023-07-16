@@ -10,8 +10,8 @@ import {
 } from "../redux/features/book/bookApi"
 import bookGenres from "../constants/bookGenre"
 import { useForm } from "react-hook-form"
-import { IBook } from "../types/globalTypes"
 import { toast } from "react-toastify"
+import React from "react"
 
 export type Inputs = {
     title: string

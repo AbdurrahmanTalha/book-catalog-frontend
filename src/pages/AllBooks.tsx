@@ -13,7 +13,7 @@ export default function AllBooks() {
     const [genre, setGenreValue] = useState("")
     const [publishedAt, setPublishedAtValue] = useState("")
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    const { data, isLoading, error } = useGetAllBooksQuery(
+    const { data } = useGetAllBooksQuery(
         {
             searchTerm: search,
             genre: genre,

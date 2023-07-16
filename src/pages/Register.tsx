@@ -1,5 +1,4 @@
-import { SubmitHandler, useForm } from "react-hook-form"
-import { useCreateUserMutation } from "../redux/features/auth/authApi"
+import { useForm } from "react-hook-form"
 
 type Inputs = {
     email: string
@@ -7,15 +6,7 @@ type Inputs = {
 }
 
 export default function Register() {
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm<Inputs>()
-
-    const onSubmit: SubmitHandler<Inputs> = async (user) => {
-        //
-    }
+    const { register } = useForm<Inputs>()
 
     return (
         <div className="hero min-h-screen">
@@ -30,7 +21,7 @@ export default function Register() {
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-md shadow-2xl bg-base-100">
                     {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
-                    <form action="" onSubmit={handleSubmit(onSubmit)}>
+                    <form action="">
                         <div className="card-body">
                             <div className="form-control">
                                 <label className="label">

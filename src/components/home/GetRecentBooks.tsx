@@ -6,7 +6,7 @@ import { IBook } from "../../types/globalTypes"
 import BookCard from "../ui/BookCard"
 
 export default function GetRecentBooks() {
-    const { data, isLoading, error } = useGetRecentBooksQuery(undefined)
+    const { data } = useGetRecentBooksQuery(undefined)
     console.log(data)
 
     const books = data?.data ?? []

@@ -3,16 +3,10 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 
-import { useParams } from "react-router-dom"
-import {
-    useCreateBookMutation,
-    useEditBookMutation,
-    useGetSpecificBookQuery,
-} from "../redux/features/book/bookApi"
-import bookGenres from "../constants/bookGenre"
 import { useForm } from "react-hook-form"
-import { IBook } from "../types/globalTypes"
+import { useCreateBookMutation } from "../redux/features/book/bookApi"
 import { toast } from "react-toastify"
+import bookGenres from "../constants/bookGenre"
 
 export type Inputs = {
     title: string

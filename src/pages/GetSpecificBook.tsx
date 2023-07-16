@@ -17,12 +17,7 @@ type Inputs = {
 
 export default function GetSpecificBook() {
     const { id } = useParams<ISpecificBookParams>()
-    const {
-        register,
-        handleSubmit,
-        watch,
-        formState: { errors },
-    } = useForm<Inputs>()
+    const { register, handleSubmit } = useForm<Inputs>()
     const [addReview] = useAddReviewMutation()
 
     if (!id) {

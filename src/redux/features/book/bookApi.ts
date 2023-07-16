@@ -1,5 +1,5 @@
 import { Inputs } from "../../../pages/EditBook"
-import { IBook, IReview } from "../../../types/globalTypes"
+import { IReview } from "../../../types/globalTypes"
 import api from "../../api/apiSlice"
 
 interface IGetAllBookParams {
