@@ -1,4 +1,3 @@
-import React from "react"
 import { SubmitHandler, useForm } from "react-hook-form"
 import { useCreateUserMutation } from "../redux/features/auth/authApi"
 
@@ -14,7 +13,9 @@ export default function Register() {
         formState: { errors },
     } = useForm<Inputs>()
 
-    const onSubmit: SubmitHandler<Inputs> = async (user) => {}
+    const onSubmit: SubmitHandler<Inputs> = async (user) => {
+        //
+    }
 
     return (
         <div className="hero min-h-screen">
