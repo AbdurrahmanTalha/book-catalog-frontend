@@ -1,4 +1,5 @@
-import { IReview } from "../../../types/globalTypes"
+import { Inputs } from "../../../pages/EditBook"
+import { IBook, IReview } from "../../../types/globalTypes"
 import api from "../../api/apiSlice"
 
 interface IGetAllBookParams {
@@ -48,6 +49,20 @@ const bookApi = api.injectEndpoints({
             }),
             invalidatesTags: ["book"],
         }),
+        editBook: builder.mutation({
+            query: ({ id, body }: { body: Inputs; id: string }) => ({
+                url: `/book/${id}`,
+                method: "PATCH",
+                body: body,
+            }),
+        }),
+        createBook: builder.mutation({
+            query: (body: Inputs) => ({
+                url: `/book/`,
+                method: "POST",
+                body: body,
+            }),
+        }),
     }),
 })
 
@@ -56,4 +71,6 @@ export const {
     useGetAllBooksQuery,
     useGetSpecificBookQuery,
     useAddReviewMutation,
+    useEditBookMutation,
+    useCreateBookMutation,
 } = bookApi

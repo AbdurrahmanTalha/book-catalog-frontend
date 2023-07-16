@@ -7,10 +7,13 @@ import store from "./redux/store"
 import { Provider } from "react-redux"
 import "@fortawesome/fontawesome-svg-core/styles.css"
 
+import { ToastContainer } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 ReactDOM.createRoot(document.getElementById("root")!).render(
     <React.StrictMode>
         <Provider store={store}>
             <RouterProvider router={router} />
         </Provider>
+        <ToastContainer />
     </React.StrictMode>
 )

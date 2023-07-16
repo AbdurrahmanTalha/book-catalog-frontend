@@ -53,6 +53,9 @@ export default function Navbar() {
                         <Link to="/allBooks">All Books</Link>
                     </li>
                     <li>
+                        <Link to="/createBook">Create Books</Link>
+                    </li>
+                    <li>
                         <Link to="/">Login</Link>
                     </li>
                     <li>

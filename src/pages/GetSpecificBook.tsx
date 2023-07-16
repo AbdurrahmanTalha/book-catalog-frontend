@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import {
     useAddReviewMutation,
     useGetSpecificBookQuery,
@@ -57,6 +57,12 @@ export default function GetSpecificBook() {
                 </h2>
                 <p>Genre: {book.genre}</p>
                 <p>Published At: {book.publishedAt}</p>
+                <p>
+                    <Link to={`/editBook/${id}`} className="mr-[10px]">
+                        <button className="btn">Edit</button>
+                    </Link>
+                    <button className="btn btn-danger">DELETE</button>
+                </p>
                 <div className="mt-[30px]">
                     <h2 className="text-2xl font-bold mb-[10px]">Reviews</h2>
                     <div className="flex flex-col justify-center">
@@ -76,7 +82,7 @@ export default function GetSpecificBook() {
                             <button className="btn">Write review!</button>
                         </form>
                     </div>
-                    {book.reviews.map((review) => (
+                    {book?.reviews?.map((review) => (
                         <div className="mb-[10px]">
                             <h3 className="text-1xl font-bold">
                                 {review.user}
