@@ -1,4 +1,3 @@
-import React from "react"
 import { IBook } from "../../types/globalTypes"
 import { useNavigate } from "react-router-dom"
 

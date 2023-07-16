@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import React from "react"
+
 import { useGetRecentBooksQuery } from "../../redux/features/book/bookApi"
 import { IBook } from "../../types/globalTypes"
 import BookCard from "../ui/BookCard"
