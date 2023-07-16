@@ -5,6 +5,7 @@ import { RouterProvider } from "react-router-dom"
 import router from "./routes/routes"
 import store from "./redux/store"
 import { Provider } from "react-redux"
+import "@fortawesome/fontawesome-svg-core/styles.css"
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
     <React.StrictMode>

@@ -21,7 +21,7 @@ export type IGenre =
     | "Graphic Novel/Comic"
 
 export type IReview = {
-    comments: string
+    review: string
     user: string
 }
 
@@ -30,7 +30,7 @@ export type IBook = {
     author: string
     genre: IGenre
     publishedAt: string
-    reviews?: IReview[]
+    reviews: IReview[]
     img: string
     _id: string
 }

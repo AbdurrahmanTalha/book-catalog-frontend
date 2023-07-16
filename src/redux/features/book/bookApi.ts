@@ -1,3 +1,4 @@
+import { IReview } from "../../../types/globalTypes"
 import api from "../../api/apiSlice"
 
 interface IGetAllBookParams {
@@ -35,7 +36,24 @@ const bookApi = api.injectEndpoints({
                 return queryString
             },
         }),
+        getSpecificBook: builder.query({
+            query: (id: string) => `/book/${id}`,
+            providesTags: ["book"],
+        }),
+        addReview: builder.mutation({
+            query: ({ body, id }: { body: IReview; id: string }) => ({
+                url: `/book/addReview/${id}`,
+                method: "POST",
+                body: body,
+            }),
+            invalidatesTags: ["book"],
+        }),
     }),
 })
 
-export const { useGetRecentBooksQuery, useGetAllBooksQuery } = bookApi
+export const {
+    useGetRecentBooksQuery,
+    useGetAllBooksQuery,
+    useGetSpecificBookQuery,
+    useAddReviewMutation,
+} = bookApi

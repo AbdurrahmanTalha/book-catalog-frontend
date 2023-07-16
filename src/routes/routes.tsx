@@ -3,6 +3,7 @@ import Home from "../pages/Home"
 import MainLayout from "../layouts/MainLayout"
 import AllBooks from "../pages/AllBooks"
 import Register from "../pages/Register"
+import GetSpecificBook from "../pages/GetSpecificBook"
 
 const router = createBrowserRouter([
     {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
             {
                 path: "/register",
                 element: <Register />,
+            },
+            {
+                path: "/book/:id",
+                element: <GetSpecificBook />,
             },
         ],
     },

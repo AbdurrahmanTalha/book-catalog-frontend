@@ -1,13 +1,18 @@
 import React from "react"
 import { IBook } from "../../types/globalTypes"
+import { useNavigate } from "react-router-dom"
 
 interface BookCardProps {
     book: IBook
 }
 
 export default function BookCard({ book }: BookCardProps) {
+    const navigate = useNavigate()
     return (
-        <div className="mb-5">
+        <div
+            className="mb-5 hover:cursor-pointer"
+            onClick={() => navigate(`/book/${book._id}`)}
+        >
             <img
                 src={book.img}
                 alt="Book"
