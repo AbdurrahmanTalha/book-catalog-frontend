@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import React, { useState } from "react"
+import { useState } from "react"
 import bookGenres from "../constants/bookGenre"
 import { useGetAllBooksQuery } from "../redux/features/book/bookApi"
 import BookCard from "../components/ui/BookCard"
