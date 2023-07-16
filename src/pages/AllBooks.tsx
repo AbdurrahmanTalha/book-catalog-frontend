@@ -4,7 +4,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import React, { useState } from "react"
 import bookGenres from "../constants/bookGenre"
-import { useGetAllBooksQuery } from "../redux/features/bookApi"
+import { useGetAllBooksQuery } from "../redux/features/book/bookApi"
 import BookCard from "../components/ui/BookCard"
 import { IBook } from "../types/globalTypes"
 
@@ -13,11 +13,14 @@ export default function AllBooks() {
     const [genre, setGenreValue] = useState("")
     const [publishedAt, setPublishedAtValue] = useState("")
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    const { data, isLoading, error } = useGetAllBooksQuery({
-        searchTerm: search,
-        genre: genre,
-        publishedAt: publishedAt,
-    })
+    const { data, isLoading, error } = useGetAllBooksQuery(
+        {
+            searchTerm: search,
+            genre: genre,
+            publishedAt: publishedAt,
+        },
+        { refetchOnMountOrArgChange: true }
+    )
     console.log(data)
 
     console.log(search, genre, publishedAt)

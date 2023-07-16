@@ -42,3 +42,15 @@ export type IBookFilters = {
     publishedAt?: string
     searchTerm?: string
 }
+
+export type IUserApiData = {
+    email: string
+    password: string
+}
+
+export type IUser = {
+    email: string
+    password: string
+    wishlist: IBook[]
+    _id: string
+}
